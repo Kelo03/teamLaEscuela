@@ -1,0 +1,196 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<body>
+  <div class="container-fluid">
+      <div class=" row g-0 text-center">
+          <div class="col-6">
+            {% if request.session.carro.items %}
+                  {% for key,value in request.session.carro.items %}
+                <div class="shopping-card ">
+                    <div class="item-image ">
+                        <img class="img" src="{{value.imagen}}" width="150px" height="180px"  >
+                    </div>
+                    <div class="item-details">
+                        <h1 class="heading">
+                          {{value.nombre}}
+                        </h1>
+                        <span class="sub-heading">
+                            {{value.categoria}}
+                        </span>
+                        <span class="item-price">
+                          PRECIO : {{value.precio}} $
+                        </span>
+                    </div>
+                    <div>
+                        <a class=" info material-symbols-outlined "  href="{% url 'detail' value.juego_id %}">info</a>
+                        <a  class=" delete material-symbols-outlined" href="{% url 'sub' value.juego_id %}">delete</a>
+                    </div>
+                </div>
+                  {% endfor %}
+            {% else %} 
+                <tr>
+                    <td>
+                        <div class="alert alert-danger text-cemter">Sin Productos</div>
+                    </td>
+                </tr>
+            {% endif %}
+          </div>
+        
+          <div class="col-5">
+              <thead > <h1 style="color: white">CARRITO</h1></thead>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="color: white">Nombre </th>
+                      <th scope="col" style="color: white">Precio </th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                      {% if request.session.carro.items %}
+                          {% for key,value in request.session.carro.items %}
+                          <tr>
+                              <td > <h5 style="color: white">{{value.nombre}}</h3></td>
+                              <td> <h5 style="color: white">{{value.precio}} $</h5></td>
+                          </tr>
+                          {% endfor %}
+                      {% endif %}
+                      <tr>
+                          <td style="color: white">TOTAL:</td>
+                          <td><h5 style="color: white"> {{importe_total_carro}}$</h5></td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <a href="/comprobante" class=" comprar btn btn-icon">
+                                  <span class="icon">
+                                      <i class="bi bi-cart-check"></i>
+                                  </span>
+                                  </i><span class="label">Comprar</span>
+                              </a>
+                          </td>
+                          <td>
+                              <a href="{% url 'CLS'%}" class=" vaciar btn btn-icon">
+                                <span class="icon">
+                                  <i class="bi bi-cart-x"></i>
+                                </span>
+                                  <span class="label">Vaciar</span>
+                              </a>
+                          </td>
+                      </tr>
+                </tbody>
+              </table>
+          </div>
+
+          <div class="col-1"></div>
+
+          
+      </div>
+  </div>
+
+</body>
+
+<style>
+  /*-----------------------------------------------------------------
+  */
+  .card-container{
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+  }
+  .shopping-card{
+  
+    margin: 20px auto;
+    width:500px;
+    height: 200px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 1px 2px 10px -4px;
+    background: rgb(221, 216, 216);/*  rgb(221, 216, 216)*/
+    transition: transform .2s ease-in-out;
+    cursor:pointer;
+  
+  }
+  .shopping-card:hover{
+  transform: scale(1.05);
+  }
+
+  .item-image{
+  align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    background: lightgrey ;
+    background-size: cover;
+  
+    border-radius: 12px;
+  }
+  .item-details{
+    margin: 0 auto;
+    padding: 0;
+    height:140px;
+    display: flex;
+    flex-direction: column; 
+  }
+  .heading{
+    font-size: 25px;
+  }
+  .sub-heading{
+    font-size: 16px;
+    color:grey;
+    width:100%;
+  }
+  .item-price{
+    margin-top: 80px;
+    color: rgb(255, 97, 92);
+    text-align: right;
+    margin-right:0;
+  }
+  
+  
+  
+  svg{
+    width: 30px;
+    height: 30px;
+  
+  }
+  
+  
+  
+  .btn {
+    background: none;
+    border: 5px solid rgb(247, 247, 247);
+    border-style: none none solid none;
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    width: 230px;
+    text-align: center;
+  }
+  .comprar:hover {
+    color: #a3f393;
+  }
+  
+  .info:hover {
+    color: #3a3232ce;
+  }
+  
+  
+  .delete:hover {
+    color: #ff4343;
+  }
+  
+  .vaciar:hover {
+    color: #ff4343;
+  }
+  
+  
+  </style>
+
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>La Escuela | {% block title %} {% endblock %}</title>
+    <link rel="icon" href='{% static "imagenes/Valhalla/valhallaLogo.ico" %}'>
+    <link rel="stylesheet" href='{% static "imagenes" %}' type="text/css"/>
+    <link rel="stylesheet" href='{% static "css/laescuela.css" %}' type="text/css"/> <!--ESTO-->
+</head>
+
+  <body>
+    <nav class="navbar" id="topnav">
+      <div class="container-fluid">
+        <img src='{% static "imagenes/Valhalla/valhallaLogo.png" %}' width="300" height="100">
+        
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Principal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/juegos">Juegos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tienda">Carrito</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacto">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/faqs">FAQS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/acercade">Acerca de</a>
+            </li>       
+            
+        </ul>
+
+        <form class="d-flex" method="GET" action="/juegos">
+          <input class="barraBuscar" type="search" placeholder="Busqueda" aria-label="Search" name="prd" value="{{request.GET.q}}">
+          <button class="iconoBuscar" type="submit" ><img src='{% static "imagenes/Valhalla/BuscarLogo.png" %}' height="35" width="35"></button>
+        </form>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Cerrar Sesion</a>
+            </li>
+        {% else %}
+          <a href="/"><button class="IconoRedes" style="color: rgba(255, 255, 255, 0.614)" type="submit" >
+            <img src='{% static "imagenes/Miembros/Mc_Login.png" %}' height="35" width="35">
+          </button></a>
+        {% endif %}
+      </div>
+    </nav>
+
+      {% block content %}
+
+      {% endblock %}
+
+      <div class="container-fluid">
+          <footer class="site-footer">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <h6 style="color: white">Sobre nosotros</h6>
+                    <p class="text-justify" style="color: rgba(255, 255, 255, 0.641)">Valhalla Store es una pagina web de compra de videojuegos creada por un equipo de 3 personas, buscamos ofrecer juegos a un precio accesible con un apartado visual simple pero hermoso. Aun seguimos en desarrollo y mejorando este sitio, La escuela les desea una buena visita y recibe cualquier critica para seguir mejorando esta pagina. </p>
+                  </div>
+        
+                  <div class="col-xs-6 col-md-3">
+                    <h6>Categorias</h6>
+                    <ul class="footer-links">
+                      <li><a href="/juegos/?categoria=Accion" style="color: rgba(255, 255, 255, 0.641)"s>Acción</a></li>
+                      <li><a href="/juegos/?categoria=Aventura" style="color: rgba(255, 255, 255, 0.641)">Aventura</a></li>
+                      <li><a href="/juegos/?categoria=Mundo+Abierto" style="color: rgba(255, 255, 255, 0.641)">Mundo abierto</a></li>
+                      <li><a href="/juegos/?categoria=Casual" style="color: rgba(255, 255, 255, 0.641)">Casual</a></li>
+                      <li><a href="/juegos" style="color: rgba(255, 255, 255, 0.641)">Moba</a></li>
+                    </ul>
+                  </div>
+        
+                  <div class="col-xs-6 col-md-3">
+                    <h6>Información</h6>
+                    <ul class="footer-links">
+                      <li><a href="/acercade" style="color: rgba(255, 255, 255, 0.641)">Acerca de Nosotros</a></li>
+                      <li><a href="/contacto " style="color: rgba(255, 255, 255, 0.641)">Contactanos</a></li>
+                      <li><a href="/faqs" style="color: rgba(255, 255, 255, 0.641)">Preguntas Frecuentes</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-sm-6 col-xs-12">
+                      <p class="copyright-text" style="color: white">Copyright &copy; 2022 All Rights Reserved by <a href="#" style="color: white">Valhalla</a></p>
+                  </div>
+        
+                  <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                      <button class="IconoRedes" style="color: white" type="submit" onclick="window.open('https://www.instagram.com/valhalla__stores/')">
+                          <img src='{% static "imagenes/Valhalla/InstagramLogo.png" %}' height="35" width="35">
+
+                      </button>
+                      <button class="IconoRedes" style="color: white" type="submit" onclick="location.href='https://www.facebook.com/login/'">
+                          <img src='{% static "imagenes/Valhalla/FacebookLogo.png" %}' height="35" width="35">
+                      </button>
+                      <button class="IconoRedes" style="color: white" type="submit" onclick="location.href='https://www.youtube.com/login'">
+                          <img src='{% static "imagenes/Valhalla/YoutubeLogo.png" %}' height="35" width="35">
+                      </button>  
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        </footer>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+  </body>
+</html>

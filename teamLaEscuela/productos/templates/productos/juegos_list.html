@@ -1,0 +1,257 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<body>
+    {% if user.is_superuser %} 
+        <li>
+            <div class="buttons row">
+                <div class="col-2"></div>
+                <div class="holder">
+                    <a href="/create" class="btn btn-icon">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </span>
+                        <span class="label">Crear</span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    {% endif %}
+    
+    
+    {% if juegos_list %}
+        <div id="tablaJuegos" class="container-fluid"><!-- fluid ajusta el contenedor al tamaño de la pagina -->
+            <div class="row">
+                <div class=" col-md-1 col-lg-2"></div>
+                <div class="col-sm-12 col-md-8 col-lg-8">
+                    <table class="rwd-table">
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            
+                            <th>
+                                <a class=" dropdown-toggle nav-item dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categoria
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <form  method="GET" action="/juegos">
+                                        <li><button class="dropdown-item"  type="text" value="Accion" name="categoria">Accion</button></li>
+                                        <li><button class="dropdown-item"  type="text" value="Aventura" name="categoria">Aventura</button></li>
+                                        <li><button class="dropdown-item"  type="text" value="Mundo Abierto" name="categoria">Mundo Abierto</button></li>
+                                        <li><button class="dropdown-item"  type="text" value="Combate con Cartas" name="categoria">Combate con Cartas</button></li>
+                                        
+                                        <li><button class="dropdown-item"  type="text" value="Casual" name="categoria">Casual</button></li>
+                                        <li><button class="dropdown-item"  type="text" value="" name="categoria">Todos</button></li>
+                                    </form>
+                                </ul>
+                            </th>
+                            <th>Desarrolladora</th>
+                            <th>Fecha de Lanzamiento</th>
+                            <th>Precio</th>
+                        </tr>
+
+                        {% for juego in juegos_list %} 
+                            <tr>
+                                <td data-th="Imagen"><img src="{{juego.imagenBig.url}}" width="300" height="150"></td>
+                                <td data-th="Nombre">{{juego.nombre}}</td>
+                                
+                                <td data-th="Categoria">{{juego.categoria}}</td>
+                                <td data-th="Desarrolladora">{{juego.desarrolladora}}</td>
+                                <td data-th="Fecha de Lanzamiento">{{juego.fecha_de_lanzamiento}}</td>
+                                <td data-th="Precio">{{juego.precio}}</td>
+                                <td> <a class=" info material-symbols-outlined "  href="{% url 'detail' juego.id %}">info</a> </td>
+                                <td> <a class="carrito material-symbols-outlined" href="{% url 'agregar' juego.id %}" >garden_cart</a></td>
+                                {% if user.is_superuser %}                      
+                                <td> <a class=" delete material-symbols-outlined" href="{% url 'delete' juego.id %}">delete</a> </td>                
+                                <td><a class=" edit material-symbols-outlined" href="{% url 'update' juego.id %}" >rate_review</a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+                <div class=" col-md-2 col-lg-2"></div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  {% if page_obj.has_previous %}    
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.previous_page_number}}">Previous</a>
+                      </li>
+                  {% endif %}
+                  {% for i in paginator.page_range %}
+                      
+                      {% if page_obj.number == i %}
+                          <li class="page-item active">
+                              <a class="page-link">{{i}}</a>
+                          </li>
+                      
+                      {% else %}
+                          
+                          <li class="page-item">
+                              <a class="page-link">{{i}}</a>
+                          </li>
+                      
+                      {% endif %}
+                  
+                  {% endfor %}
+                  {% if page_obj.has_next %}
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number}}">Next</a>
+                      </li>
+                  {% endif %}
+                </ul>
+              </nav>   
+        </div>
+       
+    {% else %}
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>No se ha encontrado el juego!</strong> Prueba buscando otro titulo!
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="alert" aria-label="Close">X</button>
+        </div>
+ 
+    {% endif %}
+
+</body>
+
+<style>
+    .material-symbols-outlined {
+        font-variation-settings:
+      'FILL' 0,
+      'wght' 600,
+      'GRAD' 0,
+      'opsz' 48
+    }
+    
+    
+    .a {
+      color: #aaa;
+      cursor: pointer;
+      vertical-align: middle;
+      margin-top: -4px;
+    }
+    
+    .edit:hover {
+      color: #82E0AA;
+    }
+    
+    .delete:hover {
+      color: #dc2a2a;
+    }
+    .info:hover {
+      color: #ECF0F1;
+    }   
+    .carrito:hover {
+      color: #a3f393;
+    }  
+    
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+     div.buttons {
+         left: 50%;
+         position: relative;
+         
+         transform: translate3d(-50%,-50%,0);
+    }
+     div.holder {
+         display: block;
+         float: left;
+         margin: 4px;
+         -webkit-perspective: 1000;
+         -moz-perspective: 1000;
+         -ms-perspective: 1000;
+         perspective: 1000;
+    }
+     a.btn {
+         background:  #7a8a8b;
+         -webkit-border-radius: 2px;
+         -moz-border-radius: 2px;
+         border-radius: 2px;
+         -moz-background-clip: padding;
+         -webkit-background-clip: padding-box;
+         background-clip: padding-box;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.4);
+         color: #fff;
+         display: block;
+         font-family: 'Open Sans', sans-serif;
+         overflow: hidden;
+         padding: 8px 40px 8px 50px;
+         position: relative;
+         text-decoration: none;
+         -webkit-transition: all 0.15s ease;
+         -moz-transition: all 0.15s ease;
+         -ms-transition: all 0.15s ease;
+         -o-transition: all 0.15s ease;
+         transform-origin: right;
+    }
+     a.btn span.icon {
+         background: #7a8a8b;
+         -webkit-border-top-right-radius: 0;
+         -webkit-border-bottom-right-radius: 0;
+         -webkit-border-bottom-left-radius: 2px;
+         -webkit-border-top-left-radius: 2px;
+         -moz-border-radius-topright: 0;
+         -moz-border-radius-bottomright: 0;
+         -moz-border-radius-bottomleft: 2px;
+         -moz-border-radius-topleft: 2px;
+         border-top-right-radius: 0;
+         border-bottom-right-radius: 0;
+         border-bottom-left-radius: 2px;
+         border-top-left-radius: 2px;
+         -moz-background-clip: padding;
+         -webkit-background-clip: padding-box;
+         background-clip: padding-box;
+         clip-path: url(#clipThis);
+         height: 100%;
+         left: 0;
+         overflow: hidden;
+         position: absolute;
+         top: 0;
+         width: 37px;
+    }
+    a.btn span.icon svg {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate3d(10%,-50%,0);
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        width: 16px;
+        z-index: 10;
+    }
+    
+     a.btn:hover {
+         box-shadow: 0 6px 10px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.15);
+         transform: translate3d(0,0,80px);
+    }
+     a.btn:hover span.icon svg {
+         transform: translate3d(-30%,-50%,0);
+         -webkit-transition: all 0.3s ease;
+         -moz-transition: all 0.3s ease;
+         -ms-transition: all 0.3s ease;
+         -o-transition: all 0.3s ease;
+    }
+     a.btn:active {
+         box-shadow: 0 0px 1px rgba(0,0,0,0.35), 0 0px 1px rgba(0,0,0,0.4);
+         transform: translate3d(0,0,0) scale(1);
+    }
+     a.btn:active span.icon svg {
+         transform: translate3d(-30%,-50%,0);
+         -webkit-transition: all 0.3s ease;
+         -moz-transition: all 0.3s ease;
+         -ms-transition: all 0.3s ease;
+         -o-transition: all 0.3s ease;
+    }   
+</style>
+
+
+{% endblock %}

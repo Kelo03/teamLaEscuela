@@ -1,0 +1,163 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %} Acerca De {% endblock %}
+{% block content %}
+
+<body>
+    <br>
+    <div class= "container-fluid row">
+        <div class="col-md-12">
+            <form class="fomula" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+    
+                    <h1> Crear Juego </h1>
+                    <fieldset class="fiel">
+                        <legend class="lol"><span class="number">1</span> Datos del Juego</legend>
+                        <label class="laaabe" for="name">Nombre:</label>
+                        <input class="imput" type="text" id="name" {{form.nombre}} 
+                        <label  class="laaabe" for="bio">Descripcion:</label>
+                        <textarea class="texta" id="bio"  {{form.descripcion}}  </textarea>
+                
+                        <label  class="laaabe"for="job">Categoria:</label>
+                        <input class="imput" type="text" id="name" {{form.categoria}} 
+
+                    
+                        <label class="laaabe" for="name">Desarroladora:</label>
+                        <input class="imput" type="text" id="name" {{form.desarrolladora}} 
+                        <label  class="laaabe" for="name">Lanzamiento:</label>
+                        <input  class="imput"type="text" id="name" {{form.fecha_de_lanzamiento}}      
+                        <label  class="laaabe"for="number">Precio:</label>
+                        <input class="imput" type="number" id="name"{{form.precio}} 
+                    </fieldset>
+                    <fieldset class="fiel">  
+                        <legend class="lol"><span class="number">2</span> Imagenes del Juego</legend>
+                    </fieldset>
+                    
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label"></label>
+                     
+                      {{form.imagenSmall}}
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label"></label>
+                      
+                      {{form.imagenBig}}
+                    </div>
+                    
+                    <input class="btn btn-primary" type="submit" value="Actualizar">
+                    <a class="btn btn-danger" href='{% url "juegos" %}' role="button" value="Cancelar">Cancelar</a>
+            </form>
+        </div>
+    </div>
+    <br>
+</body>
+<style>
+  *, *:before, *:after {
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Nunito', sans-serif;
+color: #ffffff;
+}
+
+.fomula {
+max-width: 300px;
+margin: 10px auto;
+padding: 10px 20px;
+background-color:#26272b;
+border-radius: 8px;
+}
+
+h1 {
+margin: 0 0 30px 0;
+text-align: center;
+}
+
+
+.imput[type="text"],
+.imput[type="password"],
+.imput[type="date"],
+.imput[type="datetime"],
+.imput[type="email"],
+.imput[type="number"],
+.imput[type="search"],
+.imput[type="tel"],
+.imput[type="time"],
+.imput[type="url"],
+.texta,
+.select {
+background: rgba(255,255,255,0.1);
+border: none;
+font-size: 16px;
+height: auto;
+margin: 0;
+outline: 0;
+padding: 15px;
+width: 100%;
+background-color: #e8eeef;
+color: #8a97a0;
+box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+margin-bottom: 30px;
+}
+
+.imput[type="radio"],
+.imput[type="checkbox"] {
+margin: 0 4px 8px 0;
+}
+
+.arg {
+padding: 6px;
+height: 32px;
+border-radius: 2px;
+}
+
+
+
+.fiel {
+margin-bottom: 30px;
+border: none;
+}
+
+.lol{
+font-size: 1.4em;
+margin-bottom: 10px;
+}
+
+.laaabe{
+display: block;
+margin-bottom: 8px;
+}
+
+.laaabe.light {
+font-weight: 300;
+display: inline;
+}
+
+.number {
+background-color: #8c71f7;
+color: #fff;
+height: 30px;
+width: 30px;
+display: inline-block;
+font-size: 0.8em;
+margin-right: 4px;
+line-height: 30px;
+text-align: center;
+text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+border-radius: 100%;
+}
+
+@media screen and (min-width: 480px) {
+
+.fomula{
+  max-width: 480px;
+}
+
+}
+
+</style>
+{% endblock %}

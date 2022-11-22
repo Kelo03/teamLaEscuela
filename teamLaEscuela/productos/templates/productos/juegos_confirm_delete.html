@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %} Acerca De {% endblock %}
+{% block content %}
+
+<body>
+    <br><br><br>
+    <div class="container-fluid">
+        <div class="row">
+        
+            <div class="col-3"></div>
+            
+            <div class="col-6" style="color: white; background-color: #26272b;">
+                
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <img style="position:relative; left:52px; "src="{{juegos.imagenBig.url}}">
+                    <p>¿Estás seguro de que quieres borrar <b>"{{ object }}"</b>?</p>
+                    <input type="submit" value="Eliminar">
+                    <a href="{% url 'juegos' %}"><input type="button" value="Cancelar"></a>  
+                </form>
+            </div>
+
+            <div class="col-3"></div>
+        </div>
+    </div>
+    <br><br><br>
+</body>
+
+{% endblock %}
+

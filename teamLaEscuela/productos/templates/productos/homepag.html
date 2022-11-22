@@ -1,0 +1,366 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+
+<body>
+    <main id="main"> 
+        <div id="main-primary">
+            <section class="section">
+                <div class="section-header">
+                    <h1 style="color:white">{{juegos.nombre}}</h1>
+                </div>
+                
+                <div class="section-content">
+                    <div class="game-card">
+                        <div class="game-card-image">
+                            <img src="{{juegos.imagen2.url}}" alt="Example Placeholder Image" />
+                        </div>
+                        <div class="game-card-action">
+                            <button class="button is-full-width is-blue">
+                                Free Now
+                            </button>
+                        </div>
+                        <div class="game-card-detail">
+                            <h4 class="game-card-detail-title">The Messenger</h4>
+                            <p class="game-card-detail-note">Free Now - Nov 21st</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <!-- News -->
+            <section class="section">
+                
+                <div class="section-content">
+                    
+                    
+                </div>
+            </section>
+        </div>
+        
+        <div id="main-secondary">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <div class="card fondo-card" style="width: 18rem;">
+                <img src="{{juegos.imagen.url}}" class="card-img-top" alt="...">
+                <div  class="card-body">
+                    
+                    <p style="color:white" class="card-text">{{juegos.descripcion}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li style="color:white" class="list-group-item  fondo-card">An item</li>
+                    <li style="color:white" class="list-group-item  fondo-card" >A second item</li>
+                    <li style="color:white" class="list-group-item  fondo-card">A third item</li>
+                </ul>
+                
+            </div>
+        </div>
+    </main>
+    <a href="{% url 'agregar' juegos.id %}" class="btn btn-primary">Agregar al Carrito</a>
+    
+</body>
+
+<style>
+    /********/
+/* BASE */
+/********/
+
+:root {
+    --color-gray-primary: #121212;
+    --color-gray-secondary: #202020;
+    --color-gray-tertiary: #303030;
+    --color-gray-highlight: #606060;
+    --color-blue: #0078f2;
+    --color-white: #ffffff;
+}
+
+body {
+    font: 400 100% Sans-Serif;
+    background: var(--color-gray-primary);
+}
+p {margin: 0;}
+p + p {margin-bottom: 2em;}
+
+/**********/
+/* LAYOUT */
+/**********/
+
+/* Header */
+#header {
+    background: var(--color-gray-secondary);
+    padding: 3em 4em;
+}
+#header-logo {margin-bottom: 1.5em;}
+#header-primary {}
+#header-secondary {
+    position: absolute;
+    right: 3em;
+    top: 3em;
+}
+
+/* Main */
+#main {
+    width: 90%;
+    max-width: 100em;
+    margin: 4em auto;
+    display: grid;
+    grid-template-columns: 1fr 17em;
+    grid-gap: 2em;
+}
+#main-primary {}
+#main-secondary {}
+
+/***********/
+/* MODULES */
+/***********/
+
+/* Button */
+.button {
+    padding: 1.5rem 3rem;
+    border: none;
+    text-transform: uppercase;
+    font-size: .75em;
+    display: block;
+    cursor: pointer;
+}
+.button.is-full-width {
+    width: 100%;
+}
+.button.is-blue {
+    background: var(--color-blue);
+    color: var(--color-white);
+}
+.button.is-clean {
+    background: none;
+    padding: 0;
+    color: var(--color-white);
+}
+.button.is-centered {
+    margin: 0 auto;
+}
+
+/* Friends Card */
+.friends-card {
+    color: red;
+    background: var(--color-gray-secondary);
+    border-radius: .25em;
+    padding: 3em;
+}
+.friends-card-icons {
+    text-align: center;
+}
+.friends-card-note {
+    color: var(--color-gray-highlight);
+    text-align: center;
+    max-width: 70%;
+    margin: 2em auto;
+}
+.friends-card-action {
+    
+}
+
+/* Horizontal List */
+.horizontal-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.horizontal-list > li {
+    display: inline-block;
+}
+
+/* Game Card */
+.game-card {}
+.game-card-image {}
+.game-card-image > img {
+    width: 100%;
+    display: block;
+}
+.game-card-action {}
+.game-card-detail {
+    color: #fff;
+    margin-top: 1em;
+}
+.game-card-detail-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 .25em 0;
+}
+.game-card-detail-note {
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--color-gray-highlight);
+}
+
+/* Launch Card */
+.launch-card {
+    position: relative;
+}
+.launch-card:hover .launch-card-action {
+    opacity: 1;
+}
+.launch-card-image {}
+.launch-card-image > img {
+    width: 100%;
+    display: block;
+}
+.launch-card-action {
+    width: 100%;
+    color: #fff;
+    font-size: .75em;
+    background: var(--color-blue);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    
+    opacity: 0;
+    transition: opacity ease-in-out .3s;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* News Card */
+.news-card {
+    background: var(--color-gray-secondary);
+    
+}
+.news-card:hover {
+    background: var(--color-gray-tertiary);
+}
+.news-card-header {
+    color: #fff;
+    padding: 2em;
+}
+.news-card-header > h1 {
+    font-size: 1.5em;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.news-card-header-details {
+    color: var(--color-gray-highlight);
+    margin-top: .5em;
+}
+.news-card-image {
+    background: var(--color-gray-tertiary);
+    min-height: 12em;
+    position: relative;
+}
+.news-card-image > img {
+    width: 100%;
+    display: block;
+}
+.news-card-image-action {
+    
+}
+.news-card-body {
+    color: #fff;
+    padding: 2em;
+    line-height: 1.5;
+}
+
+/* Logo */
+.logo {
+    color: #fff; 
+    font-weight: 800; 
+    line-height: 1;
+    text-transform: uppercase;
+}
+.logo > .fa {
+    margin-right: .5em;
+}
+
+/* Nav */
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+.nav > li {
+    display: inline-block;
+    margin: 0 2em 0 0;
+}
+.nav a {
+    color: #999;
+    font-weight: 600;
+    text-decoration: none;
+}
+.nav a > .fa {
+    margin-right: .5em;
+}
+.nav a:hover,
+.nav a:active,
+.nav a.is-active {
+    color: #fff;
+    transition: color ease-in-out .2s;
+}
+
+/* Section */
+.section {
+    
+}
+.section + .section {
+    margin-top: 4em;
+}
+.section-header {
+    margin: 0 0 .75em 0; 
+}
+.section-header > h2 {
+    color: var(--color-gray-highlight);
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1;
+    margin: 0;
+}
+.section-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2em;
+}
+
+/***********/
+/* UTILITY */
+/***********/
+
+.is-not-mobile {
+    display: none;
+}
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+
+@media screen and (min-width: 100em) {
+    #header {display: flex;}
+    #header-logo {
+        margin-bottom: 0;
+        margin-right: 3em;
+    }
+    #header-primary {}
+    #header-secondary {margin-left: auto;}
+    
+    .is-not-mobile {
+        display: inline;
+    }
+}
+
+.fondo-card{
+    background-color: rgb(39, 34, 34);
+    border:none;
+}
+
+</style>
+
+{% endblock %}

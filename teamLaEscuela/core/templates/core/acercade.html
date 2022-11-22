@@ -1,0 +1,221 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %} Acerca De {% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+
+<body>
+    <br><br>
+
+    <div class="container-fuid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4" >
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="profile-card text-center ">
+                                <div class="profile-info border border">
+                                    <img class="profile-pic"  src='{% static "imagenes/Miembros/EzequielCarrillo.jpg" %}'>
+                                    <h2 class="hvr-underline-from-center">EZEQUIEL CARRILLO
+                                    <span>Developer / Footer  </span></h2>
+                                    <div>Hola me presento soy Ezequiel "Kelito" Carrillo, estudio 2°Año de Ingenieria y espero que esta pagina les guste. Vamos argentina tenemos que ganar el mundial</div>
+                                    <a  target="_blank" href="https://twitter.com/Ezequie40774880"><i class="fa fa-twitter fa-2x"></i></a>
+                                    <a target="_blank" href="https://virtual.unju.edu.ar/user/profile.php?id=41406"><i class="fa fa-envelope-o fa-2x"></i></a>
+                                    <a target="_blank" href="https://www.linkedin.com/in/ezequiel-carrillo-a34244256/"><i class="fa fa-linkedin fa-2x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="profile-card text-center ">
+                                <div class="profile-info border ">
+                                    <img class="profile-pic"  src='{% static "imagenes/Miembros/EzequielBalcarce.jpg" %}'>
+                                    <h2 class="hvr-underline-from-center">EZEQUIEL BALCARCE
+                                    <span>Developer / Manteiner </span></h2>
+                                    <div>Hola me presento soy Ezequiel "Kelo" Balcarce, estudio 2°Año de Ingenieria y espero que esta pagina les guste. Vamos argentina tenemos que ganar el mundial</div>
+                                    <a target="_blank" href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
+                                    <a target="_blank" href="https://virtual.unju.edu.ar/user/profile.php?id=41394"><i class="fa fa-envelope-o fa-2x"></i></a>
+                                    <a target="_blank" href="https://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="profile-card text-center ">
+                                <div class="profile-info border">
+                                    <img class="profile-pic"  src='{% static "imagenes/Miembros/Juani.jpeg" %}'>
+                                    <h2 class="hvr-underline-from-center">JUANI  CASAS
+                                    <span>Developer / Manteiner </span></h2>
+                                    <div>Hola me presento soy Juan "Junin" Casas, estudio 2°Año de Ingenieria y espero que esta pagina les guste. Vamos argentina tenemos que ganar el mundial</div>
+                                    <a target="_blank" href="https://www.twitter.com/mike_youngg"><i class="fa fa-twitter fa-2x"></i></a>
+                                    <a target="_blank" href="https://virtual.unju.edu.ar/user/profile.php?id=41394"><i class="fa fa-envelope-o fa-2x"></i></a>
+                                    <a target="_blank" href="https://www.linkedin.com"><i class="fa fa-linkedin fa-2x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="opacity: 5%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="opacity: 5%;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    
+        <br><br>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div id="videosKelo" class="card h-100 mx-auto">
+                    <iframe height="315" src="https://www.youtube.com/embed/WPK5ts0i1nk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Los 30 MEJORES JUEGOS de PC (2022)</h5>
+                        <p class="card-text">Los 30 mejores juegos de PC en 2022. Repasamos los mejores títulos que puedes disfrutar en estos momentos en tu ordenador, desde grandes clásicos a lanzamientos recientes, son juegos que ningún pecero debería perderse</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div id="videosKelo" class="card h-100 mx-auto">
+                    <iframe height="315" src="https://www.youtube.com/embed/Bdj9fM9T6N8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">LOS 20 JUEGOS MÁS MÍTICOS DE PS2: Nostalgia Inside</h5>
+                        <p class="card-text">¿Quién no ha tenido una PlayStation 2? La veterana consola de Sony todavía sigue siendo la consola de sobremesa más vendida de todos los tiempos y millones de jugadores descubrieron los videojuegos con ella. En este vídeo repasamos los juegos más míticos de la trayectoria de la máquina. ¿Tuviste una PS2? ¿Te ha atacado la nostalgia?</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-4 ">
+                <div id="videosKelo" class="card h-100 mx-auto">
+                    <iframe height="315" src="https://www.youtube.com/embed/qppY8lHeGSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Los 12 mejores juegos de la década | (2010-2019)</h5>
+                        <p class="card-text">Veamos cuales son los mejores juegos de los pasados 10 años, años en los que hemos tenido increíbles juegos. Esta es mi lista de lo mejor de 2010 a 2019</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+</body>
+
+<style>
+
+    .container {
+      padding: 20px;
+    }
+    
+    .profile-card {
+      
+      margin-bottom: 20px;
+                
+            }
+            
+    .profile-pic {
+      border-radius: 50%;
+      border: 2px solid rgb(170, 152, 98);
+      position: relative;
+      bottom: 12px;
+      margin: auto;
+      z-index: 1;
+      max-width: 100px;
+      -webkit-transition: all 0.4s;
+              transition: all 0.4s;
+                    }
+    
+                    
+    .profile-info {
+            color: rgb(255, 255, 255);
+            padding: 35px;
+            position: relative;
+            margin-top: 15px;
+                    }
+            
+    .profile-info h2 {
+        font-size: 11px;
+        color: #E8E8E8;
+        letter-spacing: 1px;
+        padding-bottom: 9px;
+                    }
+                    
+    .profile-info span {
+        display: block;
+        font-size: 11px;
+        color: #4CB493;
+        letter-spacing: 1px;
+                }
+    
+    .profile-info a {
+         color: #4CB493;
+            }
+    .profile-info i {
+            padding: 15px 35px 0px 35px;
+            }
+            
+    
+    .profile-card:hover .profile-pic {
+        transform: scale(1.1);
+            }
+    
+    
+            
+            
+            
+            
+    /* Underline From Center */
+    .hvr-underline-from-center {
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+      overflow: hidden;
+    }
+    .hvr-underline-from-center:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 52%;
+      right: 52%;
+      bottom: 0;
+      background: #ffffff;
+      border-radius: 50%;
+      height: 3px;
+      -webkit-transition-property: all;
+      transition-property: all;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+    }
+    .profile-card:hover .hvr-underline-from-center:before, .profile-card:focus .hvr-underline-from-center:before, .profile-card:active .hvr-underline-from-center:before {
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #CECECE;
+      border-radius: 0;
+    }
+    /*************************   GALERIA   **************************************/
+    </style>
+
+{% endblock %}

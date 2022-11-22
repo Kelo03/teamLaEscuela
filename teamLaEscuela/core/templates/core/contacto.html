@@ -1,0 +1,237 @@
+{% extends "core/base.html" %}
+{% load static %}       
+{% block title %} Contacto {% endblock %}
+{% block content %}
+   <!-- GRADIENTE
+    background:rgb(24, 24, 24);  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #b29f94, #603813);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1f1e1e, #56504c);-->
+    <!--<link rel="stylesheet" href='{% static "css/contacto.css" %}' type="text/css"/>-->
+    <body> 
+
+        {% if mensaje %}
+          <div class="alert alert-warning alert-dismissible fade show " role="alert">
+            <strong>Se ha enviado su correo!</strong>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="alert" aria-label="Close">X</button>
+          </div>
+        {% endif %}
+        <div class=" container-fluid   " > 
+            <div class="contac  row ">
+                <div class="col-1 col-sm-1 col-md-2 col-lg-4 col-xl-3"></div>
+                <div class="col-1 col-sm-4 col-md-6 col-lg-4 col-xl-4">
+                    <section class="izquierda mt-5 mx-auto">          
+                        
+                        <br><h6 class="titulo mx-auto"> Los campos marcados con un <b>*</b> son obligatorios</h6>
+                        <div class="wrapper">
+                           
+                            <form class="form-Contac  mx-auto" action="/contacto/" method="POST"  autocomplete="off" >{% csrf_token %}
+                                <div class="group">
+                                    <input class="form-input" type="text" required="required" name="asunto"/>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="titulo-texto">Asunto*</label>
+                                </div>
+                                <div class="group">
+                                    
+                                    <input class="form-input" type="text" required="required" name="nombre"/>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="titulo-texto" >Nombre *</label>
+                                </div>
+                                <div class="group">
+                                    <input class="form-input" type="text" required="required" name="apellido" />
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="titulo-texto">Apellido*</label>
+                                </div>
+                                <div class="group">
+                                    <input class="form-input" type="text" required="required" name="email"/>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="titulo-texto" >Email *</label>
+                                </div>
+                                <div class="group">
+                                    <input class="form-input" type="text" required="required" name="telefono"/>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="titulo-texto" >Nº Telefono</label>
+                                </div>
+                                <div class="group">
+                                    <textarea class="form-text" type="textarea" rows="5" required="required" name="mensaje"></textarea>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label class="titulo-texto" >Mensaje *</label>
+                                </div>
+                                <div class="btn-box">
+                                  
+                                    <button class="btn btn-submit" type="submit" value="Enviar">Enviar</button>
+                                    <button class="btn btn-cancel" type="reset">Cancelar</button>
+                                </div>
+                            </form>
+                      </section>       
+                  </div>  
+                  <div class=" col-1 col-sm-2 col-md-2 col-lg-4 col-xl-4"></div>        
+             </div>
+        
+
+    
+    </body>
+    
+    <script  type='text/javascript'   src='{%static "js/boton.js"%}'></script>
+    
+    <style>
+          *, :before, :after {
+        box-sizing: border-box;
+      }
+      
+      .titulo{
+          position: relative;
+          left: 40%;
+          color:rgba(246, 247, 249, 0.718)
+      }
+      .form-Contac  {
+        width: 320px;
+        margin: 60px;
+      
+      }
+      .form-Contac h1{
+        font-size: 3em;
+        font-weight: 300;
+        text-align: center;
+        color: #2196F3;
+      }
+      .form-Contac h5 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #c6c6c6;
+      }
+      .form-Contac hr.sep {
+        background: #2196F3;
+        box-shadow: none;
+        border: none;
+        height: 2px;
+        width: 25%;
+        margin: 0px auto 45px auto;
+      }
+      .form-Contac ,.emoji {
+        font-size: 1.2em;
+      }
+      .group {
+        position: relative;
+        margin: 45px 0;
+      }
+      .form-text {
+        resize: none;
+      }
+      
+      .form-input,.form-text {
+        background: none;
+        color: rgb(255, 255, 255);
+        font-size: 25px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 500px;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid #c6c6c6;
+      }
+      .form-input:focus,.form-text:focus {
+        outline: none;
+      }
+      .form-input:focus ~ label, .form-text:focus ~ label, .form-input:valid ~ label, .form-text:valid ~ label {
+        top: -14px;
+        font-size: 12px;
+        color: #2196F3;
+      }
+      .form-input:focus ~ .bar:before, .form-text:focus ~ .bar:before {
+        width: 503px;
+      }
+      .form-input[type="password"] {
+        letter-spacing: 0.3em;
+      }
+      .titulo-texto {
+        color: #c6c6c6;
+        font-size: 25px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 300ms ease all;
+      }
+      .bar {
+        position: relative;
+        display: block;
+        width: 500px;
+      }
+      .bar:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 0px;
+        position: absolute;
+        background: #2196F3;
+        transition: 300ms ease all;
+        left: 0%;
+      }
+      .btn {
+        background: #fff;
+        color: #959595;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        outline: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .btn:hover {
+        color: #8b8b8b;
+        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+      }
+      .btn.btn-link {
+        background: #2196F3;
+        color: #d3eafd;
+      }
+      .btn.btn-link:hover {
+        background: #0d8aee;
+        color: #deeffd;
+      }
+      .btn.btn-submit {
+          position: relative;
+          right:30px;
+        background: #2196F3;
+        color: #bce0fb;
+      }
+      .btn.btn-submit:hover {
+        background: #0d8aee;
+        color: #deeffd;
+      }
+      .btn.btn-cancel {
+          position: relative;
+          left:10px;
+        background: #eee;
+        
+      }
+      .btn.btn-cancel:hover {
+        background: #e1e1e1;
+        color: #8b8b8b;
+      }
+      .btn-box {
+        text-align: center;
+        margin: 50px 0;
+      }
+    </style>
+
+    {% endblock %}
+    
+    
+    
+    
+    
+    
+    
+    
+    
